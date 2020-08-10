@@ -15,5 +15,17 @@
 </head>
 <body>
 	<div th:insert="fragments/fragment.html :: nav"></div>
+	<body style="background-color:#c2f0f0;">
+<div class="container">
+<div class="row">
+ <div class="col-sm-4" th:each="prod : ${prodList}">
+ <div class="divy">
+	<img style="height:100px; width:100px;" th:src="@{__${prod.colors}__}" />
+	<p th:text="${prod.price}"></p>
+	<p th:text="${prod.description}"></p>
+	</div>
+ </div>
+</div>
+</div>
 </body>
 </html>
