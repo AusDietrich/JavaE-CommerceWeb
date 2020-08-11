@@ -3,7 +3,12 @@
   background-color: #333;
   overflow: hidden;
 }
-
+.glyphicon {
+    font-size: 40px;
+}
+.badge {
+    font-size: 20px;
+}
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;

@@ -6,26 +6,34 @@
 <title>e-comm fragments</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
-<script th:src="@{js/jquery.mycart.js}"></script>
 </head>
-<body>
+<body style="background-color: #c2f0f0;">
 	<div th:insert="fragments/fragment.html :: nav"></div>
-	<body style="background-color:#c2f0f0;">
-<div class="container">
-<div class="row">
- <div class="col-sm-4" th:each="prod : ${prodList}">
- <div class="divy">
-	<img style="height:100px; width:100px;" th:src="@{__${prod.colors}__}" />
-	<p th:text="${prod.price}"></p>
-	<p th:text="${prod.description}"></p>
+	<span class="glyphicon glyphicon-shopping-cart my-cart-icon">
+		<span class="badge badge-notify my-cart-badge"></span></span>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4" th:each="prod : ${prodList}">
+				<div class="divy">
+					<img style="height: 100px; width: 100px;"
+						th:src="@{__${prod.colors}__}" />
+					<p th:text="${prod.price}"></p>
+					<p th:text="${prod.description}"></p>
+					<button class="btn btn-danger my-cart-btn" 
+					th:data-id="${prod.id}" data-name="product 1" th:data-summary="${prod.description}" 
+					th:data-price="${prod.price}" data-quantity="1" data-image="images/img_1.png">Add to Cart</button>
+				</div>
+			</div>
+		</div>
 	</div>
- </div>
-</div>
-</div>
+	<div id="cart"></div>
+	<script th:src="@{js/jquery-2.2.3.min.js}"></script>
+	<script	th:src="@{js/bootstrap.min.js}"></script>
+	<script th:src="@{js/ecommJS.js}"></script>
+	<script th:src="@{js/jquery.mycart.js}"></script>
+	<script th:src="@{js/jquery.mycart.min.js}"></script>
+	
 </body>
 </html>
