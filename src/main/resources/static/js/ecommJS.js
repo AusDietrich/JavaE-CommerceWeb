@@ -28,7 +28,7 @@ $(function() {
 			$.each(products, function() {
 				total += this.quantity * this.price;
 			});
-			var obj = {}
+			var obj = {} 
 			obj["total"] = total;
 			$.ajax({
 				type : "POST",
