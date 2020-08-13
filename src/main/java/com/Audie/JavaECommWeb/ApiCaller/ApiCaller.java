@@ -36,9 +36,10 @@ public class ApiCaller {
 			 headers.setContentType(MediaType.APPLICATION_JSON);
 			 headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 			 HttpEntity request = new HttpEntity(headers);
+//			ResponseEntity<String> response = restTemplate.exchange(
+//					"http://localhost:8080/Colors",HttpMethod.GET, request, String.class);
 			ResponseEntity<String> response = restTemplate.exchange(
 					url,HttpMethod.GET, request, String.class);
-			System.out.println(response.getBody());
 			productList = objectMapper.readValue(response.getBody(), new TypeReference<List<ProductList>>(){});
 		} catch (JsonParseException e) {
 			e.printStackTrace();

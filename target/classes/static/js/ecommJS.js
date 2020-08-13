@@ -1,6 +1,8 @@
 $(function() {
 
+	var total = 0.00;
 	var goToCartIcon = function($addTocartBtn) {
+		total = 0.00;
 		var $cartIcon = $(".my-cart-icon");
 		var $image = $(
 				'<img width="30px" height="30px" src="'
@@ -24,31 +26,48 @@ $(function() {
 		affixCartIcon : true,
 		checkoutCart : function(products) {
 			$.each(products, function() {
-				console.log(this);
+				total += this.quantity * this.price;
+			});
+			var obj = {}
+			obj["total"] = total;
+			$.ajax({
+				type : "POST",
+				contentType : "application/json",
+				url : "total",
+				data : JSON.stringify(obj),
+				dataType : 'json',
+				timeout : 100000,
+				success : function(data) {
+					console.log("SUCCESS: ", data);
+				},
+				error : function(e) {
+					console.log("ERROR: ", e);
+				},
+				done : function(e) {
+					console.log("DONE");
+				}
 			});
 		},
 		clickOnAddToCart : function($addTocart) {
 			goToCartIcon($addTocart);
-		},
-		getDiscountPrice : function(products) {
-			var total = 0;
-			$.each(products, function() {
-				total += this.quantity * this.price;
-			});
-			return total * 0.5;
 		}
+//		,
+//		getDiscountPrice : function(products) {
+//			var total = 0;
+//			$.each(products, function() {
+//				total += this.quantity * this.price;
+//			});
+//			return total * 0.5;
+//		}
 	});
 });
 //build pop-up/expansion modal here
 $(document).ready(function(){
 	var IDs = [];
-   	$(".divy").click(function(){
+   	$(".divyDetails").click(function(){
    		IDs = [];
    		$(this).find("p").each(function(){ IDs.push(this); });
-   		 console.log($(IDs[0]).text());
-   		 console.log($(IDs[1]).text());
    		$(this).find("img").each(function(){ IDs.push(this); });
-   		console.log($(IDs[2]).attr('src'));
    		$("#modalTitle").text($(IDs[1]).text());
    		$("#modalPrice").text($(IDs[0]).text());
    		$("#modalImg").attr("src",$(IDs[2]).attr('src'));

@@ -5,4 +5,5 @@ com\Audie\JavaECommWeb\ApiCaller\ApiCaller.class
 com\Audie\JavaECommWeb\JavaSpringWebApplication.class
 com\Audie\JavaECommWeb\svc\EcommWebSvc.class
 com\Audie\JavaECommWeb\ApiCaller\ApiCaller$1.class
+com\Audie\JavaECommWeb\model\Buying.class
 com\Audie\JavaECommWeb\svc\EcommWebSvcImpl.class

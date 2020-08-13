@@ -18,26 +18,30 @@
 		<div class="row">
 			<div class="col-sm-4" th:each="prod : ${prodList}">
 				<div class="divy">
-					<img style="height: 100px; width: 100px;"
-						th:src="@{__${prod.colors}__}" />
-					<div class="row">
-						<div class="col-sm-2"></div>
-						<div class="col-sm-4">
-							<p th:text="${prod.price}"></p>
-						</div>
-						<div class="col-sm-6">
-							<p th:text="${prod.description}"></p>
+					<div class="divyDetails">
+						<img style="height: 100px; width: 100px;"
+							th:src="@{__${prod.colorImg}__}" />
+						<div class="row">
+							<div class="col-sm-2"></div>
+							<div class="col-sm-4">
+								<p th:text="${prod.price}"></p>
+							</div>
+							<div class="col-sm-3">
+								<p th:text="${prod.title}"></p>
+							</div>
+							<div class="col-sm-3">
+							</div>
 						</div>
 					</div>
 					<button class="btn btn-danger my-cart-btn" th:data-id="${prod.id}"
-						th:data-name="${prod.description}"
-						th:data-summary="${prod.description}"
+						th:data-name="${prod.title}" th:data-summary="${prod.description}"
 						th:data-price="${prod.price}" data-quantity="1"
-						th:data-image="${prod.colors}">Add to Cart</button>
+						th:data-image="${prod.colorImg}">Add to Cart</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
@@ -47,7 +51,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title" id="modalTitle">Modal Header</h4>
 				</div>
-				<div class="modal-body" >
+				<div class="modal-body">
 					<p id="modalPrice">Some text in the modal.</p>
 					<img id="modalImg" src="">
 				</div>

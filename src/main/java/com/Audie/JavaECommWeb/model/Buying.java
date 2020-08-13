@@ -1,16 +1,14 @@
 package com.Audie.JavaECommWeb.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProductList {
 
-	public int id;
-	public String colorImg;
-	public String title;
-	public Double price;
-	public String description;
+public class Buying {
+	
+	public String total;
 }
