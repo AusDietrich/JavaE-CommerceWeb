@@ -1,9 +1,0 @@
-com\Audie\JavaECommWeb\model\ProductList.class
-com\Audie\JavaECommWeb\api\EcommWebController.class
-com\Audie\JavaECommWeb\ServletInitializer.class
-com\Audie\JavaECommWeb\ApiCaller\ApiCaller.class
-com\Audie\JavaECommWeb\JavaSpringWebApplication.class
-com\Audie\JavaECommWeb\svc\EcommWebSvc.class
-com\Audie\JavaECommWeb\ApiCaller\ApiCaller$1.class
-com\Audie\JavaECommWeb\model\Buying.class
-com\Audie\JavaECommWeb\svc\EcommWebSvcImpl.class

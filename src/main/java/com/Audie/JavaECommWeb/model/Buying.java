@@ -7,8 +7,8 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class Buying {
 	
 	public String total;
+	public Cart[] cart;
 }

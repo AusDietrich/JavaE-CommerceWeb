@@ -39,8 +39,10 @@ public class EcommWebController {
 	    return modelAndView;
 	}
 	@RequestMapping(value = "/total", method = RequestMethod.POST)
-	public String total(@RequestBody Buying obj) {
-		System.out.println(obj);
-		return "{\"msg\":\"success\"}";
+	public ModelAndView total(@RequestBody Buying obj) {
+		//add attribute
+		ModelAndView modelAndView = new ModelAndView();
+	    modelAndView.setViewName("checkout");
+	    return modelAndView;
 	}
 }

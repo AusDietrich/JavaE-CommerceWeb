@@ -25,11 +25,17 @@ $(function() {
 		classCartBadge : 'my-cart-badge',
 		affixCartIcon : true,
 		checkoutCart : function(products) {
+			var cart = [];
 			$.each(products, function() {
+				var item ={id: this.id, img: this.image, name: this.name, price: this.price,
+				quantity: this.quantity, summary: this.summary};
+				cart.push(item);
 				total += this.quantity * this.price;
 			});
-			var obj = {} 
+			var obj = {};
 			obj["total"] = total;
+			obj["cart"] = cart;
+			console.log(obj);
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",
