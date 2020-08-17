@@ -34,7 +34,7 @@ $(function() {
 			});
 			var obj = {};
 			obj["total"] = total;
-			obj["cart"] = cart;
+			obj["cart"] = cart; 
 			console.log(obj);
 			$.ajax({
 				type : "POST",
