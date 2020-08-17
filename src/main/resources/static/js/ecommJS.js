@@ -45,7 +45,7 @@ $(function() {
 				timeout : 100000,
 				success : function(data) {
 					console.log("SUCCESS: ", data);
-				},
+				}, 
 				error : function(e) {
 					console.log("ERROR: ", e);
 				},
