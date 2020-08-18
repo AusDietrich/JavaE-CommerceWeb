@@ -35,7 +35,6 @@ $(function() {
 			var obj = {};
 			obj["total"] = total;
 			obj["cart"] = cart; 
-			console.log(obj);
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",
@@ -45,6 +44,8 @@ $(function() {
 				timeout : 100000,
 				success : function(data) {
 					console.log("SUCCESS: ", data);
+					document.getElementById("objJSON").value =JSON.stringify(obj.cart);
+					$("#subForm").submit();
 				}, 
 				error : function(e) {
 					console.log("ERROR: ", e);

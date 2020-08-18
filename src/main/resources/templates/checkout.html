@@ -4,6 +4,11 @@
 <body>
 </body>
 <div th:each="items: ${cart}">
-	<p th:text="${items}"></p>
+	<p th:text="${items.id}"></p>
+	<p th:text="${items.name}"></p>
+	<p th:text="${items.price}"></p>
+	<p th:text="${items.quantity}"></p>
+	<img style="height: 100px; width: 100px;"th:src="@{__${items.img}__}" />
+	<p th:text="${items.summary}"></p>
 </div>
 </html>

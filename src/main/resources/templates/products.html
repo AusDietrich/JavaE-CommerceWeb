@@ -29,8 +29,7 @@
 							<div class="col-sm-3">
 								<p th:text="${prod.title}"></p>
 							</div>
-							<div class="col-sm-3">
-							</div>
+							<div class="col-sm-3"></div>
 						</div>
 					</div>
 					<button class="btn btn-danger my-cart-btn" th:data-id="${prod.id}"
@@ -62,7 +61,9 @@
 
 		</div>
 	</div>
-
+	<form id="subForm" action="#" th:object="${obj}" th:action="@{/checkout}">
+		<input type="text" th:field="*{items}" id="objJSON"/>
+	</form>
 	<div id="cart"></div>
 	<script th:src="@{js/jquery-2.2.3.min.js}"></script>
 	<script th:src="@{js/bootstrap.min.js}"></script>

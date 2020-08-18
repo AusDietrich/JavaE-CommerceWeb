@@ -9,6 +9,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Buying {
 	
+	public String items;
 	public String total;
 	public Cart[] cart;
 }
