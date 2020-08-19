@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+      <head>
+      <link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+      </head>
 <body>
 </body>
-<div th:each="items: ${cart}">
-	<p th:text="${items.id}"></p>
-	<p th:text="${items.name}"></p>
-	<p th:text="${items.price}"></p>
-	<p th:text="${items.quantity}"></p>
-	<img style="height: 100px; width: 100px;"th:src="@{__${items.img}__}" />
-	<p th:text="${items.summary}"></p>
-</div>
+	<div th:insert="fragments/fragment.html :: nav"></div>
+
+	<table>
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th style="width:30%;">Description</th>
+                    <th>Picture</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            	<tr th:each="items: ${cart}">
+            	<td th:text="${items.id}"></td>
+            	<td th:text="${items.name}"></td>
+            	<td th:text="${#numbers.formatDecimal(items.price,0,2)}"></td>
+            	<td th:text="${items.quantity}"></td>
+            	<td style="width:30%;" th:text="${items.summary}"></td>
+            	<td><img style="height: 100px; width: 100px;"th:src="@{__${items.img}__}" /></td>
+            	<td th:text="${#numbers.formatDecimal(items.total,0,2)}"></td>
+            	</tr>
+            </tbody>
+  </table>
+  <p style="display: inline-block; width: 94%;"></p>
+  <p style="display: inline-block;" th:text="${#numbers.formatDecimal(total,0,2)}"></p>
 </html>

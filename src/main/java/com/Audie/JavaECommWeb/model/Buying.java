@@ -10,6 +10,6 @@ import lombok.Data;
 public class Buying {
 	
 	public String items;
-	public String total;
+	public Double total;
 	public Cart[] cart;
 }

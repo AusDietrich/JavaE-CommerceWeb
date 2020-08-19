@@ -13,4 +13,5 @@ public class Cart {
 	public Double price;
 	public String quantity;
 	public String Summary;
+	public Double total;
 }

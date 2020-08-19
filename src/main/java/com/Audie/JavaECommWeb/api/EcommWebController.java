@@ -1,5 +1,6 @@
 package com.Audie.JavaECommWeb.api;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,13 +44,20 @@ public class EcommWebController {
 		return modelAndView;
 	}
 
+	private static DecimalFormat df2 = new DecimalFormat("#.##");
 	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
 	public ModelAndView checkout(Buying obj, Model model) {
 		System.out.println(obj);
 		ObjectMapper mapper = new ObjectMapper();
+		Double total = 0.00;
 		try {
 			Cart[] cart = mapper.readValue(obj.getItems(), Cart[].class);
+			for(int i = 0; i < cart.length; i ++) {
+				cart[i].setTotal(cart[i].getPrice()*Double.parseDouble(cart[i].getQuantity()));
+				total+= cart[i].getTotal();
+			}
 			model.addAttribute("cart", cart);
+			model.addAttribute("total", df2.format(total));
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

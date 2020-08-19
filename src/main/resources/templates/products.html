@@ -24,7 +24,7 @@
 						<div class="row">
 							<div class="col-sm-2"></div>
 							<div class="col-sm-4">
-								<p th:text="${prod.price}"></p>
+								<p th:text="${#numbers.formatDecimal(prod.price,0,2)}"></p>
 							</div>
 							<div class="col-sm-3">
 								<p th:text="${prod.title}"></p>
@@ -34,7 +34,7 @@
 					</div>
 					<button class="btn btn-danger my-cart-btn" th:data-id="${prod.id}"
 						th:data-name="${prod.title}" th:data-summary="${prod.description}"
-						th:data-price="${prod.price}" data-quantity="1"
+						th:data-price="${#numbers.formatDecimal(prod.price,0,2)}" data-quantity="1"
 						th:data-image="${prod.colorImg}">Add to Cart</button>
 				</div>
 			</div>
