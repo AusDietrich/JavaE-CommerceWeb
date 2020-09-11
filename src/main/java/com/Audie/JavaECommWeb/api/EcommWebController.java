@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Audie.JavaECommWeb.model.Buying;
 import com.Audie.JavaECommWeb.model.Cart;
-import com.Audie.JavaECommWeb.model.ColorAngularEntity;
 import com.Audie.JavaECommWeb.model.ProductList;
 import com.Audie.JavaECommWeb.svc.EcommWebSvc;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -73,15 +72,5 @@ public class EcommWebController {
 	@RequestMapping(value = "/total", method = RequestMethod.POST)
 	public Buying total(@RequestBody Buying obj, Model model) {
 		return obj;
-	}
-	
-	@RequestMapping(value="/angular", method = RequestMethod.GET)
-	public ModelAndView angularTest(Model model) {
-		List<ColorAngularEntity> angularList = ecomSvc.getAngularList();
-		System.out.println(angularList);
-		model.addAttribute("prodList", angularList);
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("angular");
-		return modelAndView;
 	}
 }

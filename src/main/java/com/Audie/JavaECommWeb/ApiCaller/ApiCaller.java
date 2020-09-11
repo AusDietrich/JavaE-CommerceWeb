@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.Audie.JavaECommWeb.model.ColorAngularEntity;
 import com.Audie.JavaECommWeb.model.ProductList;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -26,8 +25,6 @@ public class ApiCaller {
 
 	@Value("${productList}")
 	public String url;
-	@Value("${angularUrl}")
-	public String angularUrl;
 
 	public List<ProductList> productListCaller() {
 		List<ProductList> productList = new ArrayList<>();
@@ -42,32 +39,6 @@ public class ApiCaller {
 			ResponseEntity<String> response = restTemplate.exchange(
 					url,HttpMethod.GET, request, String.class);
 			productList = objectMapper.readValue(response.getBody(), new TypeReference<List<ProductList>>(){});
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return productList;
-	}
-
-	public List<ColorAngularEntity> getAngularList() {
-		List<ColorAngularEntity> productList = new ArrayList<>();
-		ObjectMapper objectMapper = new ObjectMapper();
-		RestTemplate restTemplate = new RestTemplate();
-		try {
-			 HttpHeaders headers = new HttpHeaders();
-			 headers.setBasicAuth("user", "userPass");
-			 headers.setContentType(MediaType.APPLICATION_JSON);
-			 headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-			 HttpEntity request = new HttpEntity(headers);
-			ResponseEntity<String> response = restTemplate.exchange(
-					angularUrl,HttpMethod.GET, request, String.class);
-			System.out.println(response.getBody());
-			productList = objectMapper.readValue(response.getBody(), new TypeReference<List<ColorAngularEntity>>(){});
 		} catch (JsonParseException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
