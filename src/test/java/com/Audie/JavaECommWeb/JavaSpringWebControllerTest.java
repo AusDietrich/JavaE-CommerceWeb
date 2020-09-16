@@ -19,20 +19,20 @@
 //import org.springframework.web.servlet.ModelAndView;
 //
 //import com.Audie.JavaECommWeb.ApiCaller.ApiCaller;
-//import com.Audie.JavaECommWeb.api.EcommWebController;
+//import com.Audie.JavaECommWeb.api.WebController;
 //import com.Audie.JavaECommWeb.model.ProductList;
-//import com.Audie.JavaECommWeb.svc.EcommWebSvc;
+//import com.Audie.JavaECommWeb.svc.WebSvc;
 //
 //@RunWith(MockitoJUnitRunner.class)
 //public class JavaSpringWebControllerTest {
 //	
 //	MockMvc mockMvc;	
 //	@Mock
-//	EcommWebSvc mockSvc;
+//	WebSvc mockSvc;
 //	@Mock
 //	ApiCaller callerSvc;
 //	@InjectMocks
-//	EcommWebController classUnderTest;
+//	WebController classUnderTest;
 //	
 //	@Test
 //	public void TestIndex() {

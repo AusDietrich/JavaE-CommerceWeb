@@ -1,3 +1,11 @@
+.weatherFont{
+	font-weight:200;
+	font-size:medium;
+	text-align:center;
+}
+.row{
+	margin: 5px 0px 0px;	
+}
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;

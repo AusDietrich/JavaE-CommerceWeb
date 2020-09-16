@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>e-comm fragments</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+</head>
+<body>
+	<div th:insert="fragments/fragment.html :: nav"></div>
+	<div class="row">
+		<div th:each="weath : ${weather}"class="col-sm-4">
+			<div th:insert=" fragments/fragment.html :: ${weath.Weather[0].main}" th:style=" 'color: rgb(' +${__${weath.red}__}+ ',0,' +${__${weath.blue}__}+ ') ; ' "></div>
+		</div>
+	</div>
+	<div class="row">
+		<p class="col-sm-1"></p>
+		<p class="col-sm-5">Time to complete:</p>
+		<p class="col-sm-5" th:text="${time}"/>
+		<p class="col-sm-1"></p>
+	</div>
+</body>
+</html>

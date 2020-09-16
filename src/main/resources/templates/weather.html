@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>e-comm fragments</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+</head>
+<body>
+	<div th:insert="fragments/fragment.html :: nav"></div>
+	<h1>Weather retriever</h1>
+	<p>Enter anywhere from 1-10 cities you would like to check the weather of</p>
+	<p>The Async button below will run the process in an Asynchronous manner</p>
+	<form action="#" th:action="@{/weatherTime}" method="POST" th:object="${form}">
+		<div class="row">
+			<input class="col-sm-4" type="text" th:field="*{city1}" />
+			<input class="col-sm-4" type="text" th:field="*{city2}" />
+			<input class="col-sm-4" type="text" th:field="*{city3}" />
+		</div>
+		<div class="row">
+			<input class="col-sm-4" type="text" th:field="*{city4}" />
+	 		<input class="col-sm-4" type="text" th:field="*{city5}" />
+	 		<input class="col-sm-4" type="text" th:field="*{city6}" />
+	 	</div>
+	 	<br/>
+	 	<input type="checkbox" th:field="*{async}" value="async" />Async
+	 	<button type="submit">Check</button>  
+	</form>
+</body>
+</html>

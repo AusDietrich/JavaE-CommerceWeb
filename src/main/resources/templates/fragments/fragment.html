@@ -8,7 +8,32 @@
 		<a th:href="@{/}">Home</a>
 		<a th:href="@{/products}">Products</a>
 		<a href="http://reacts3testaws.s3-website.us-east-2.amazonaws.com/">React</a>
+		<a th:href="@{/weather}">Async Weather</a>
 	</div>
-
+	<div class="row weatherFrag" th:fragment="Clear" style="background-color:yellow;">
+		<p class="col-sm-6 weatherFont" th:text="${weath.name}" ></p>
+		<p class="col-sm-6 weatherFont" th:text="${weath.Main.temp}"></p>
+		<p class="col-sm-12 weatherFont" th:text="${weath.Weather[0].main}"></p>
+	</div>
+	<div class="row weatherFrag" th:fragment="Rain" style="background-color:DarkGrey;">
+		<p class="col-sm-6 weatherFont" th:text="${weath.name}" ></p>
+		<p class="col-sm-6 weatherFont" th:text="${weath.Main.temp}"></p>
+		<p class="col-sm-12 weatherFont" th:text="${weath.Weather[0].main}"></p>
+	</div>
+	<div class="row weatherFrag" th:fragment="Clouds" style="background-color:Gainsboro;">
+		<p class="col-sm-6 weatherFont" th:text="${weath.name}" ></p>
+		<p class="col-sm-6 weatherFont" th:text="${weath.Main.temp}"></p>
+		<p class="col-sm-12 weatherFont" th:text="${weath.Weather[0].main}"></p>
+	</div>
+	<div class="row weatherFrag" th:fragment="Snow" style="background-color:Gainsboro;">
+		<p class="col-sm-6 weatherFont" th:text="${weath.name}" ></p>
+		<p class="col-sm-6 weatherFont" th:text="${weath.Main.temp}"></p>
+		<p class="col-sm-12 weatherFont" th:text="${weath.Weather[0].main}"></p>
+	</div>
+	<div class="row weatherFrag" th:fragment="Haze" style="background-color:PaleTurquoise;">
+		<p class="col-sm-6 weatherFont" th:text="${weath.name}" ></p>
+		<p class="col-sm-6 weatherFont" th:text="${weath.Main.temp}"></p>
+		<p class="col-sm-12 weatherFont" th:text="${weath.Weather[0].main}"></p>
+	</div>
 </body>
 </html>
