@@ -71,6 +71,7 @@ public class ApiCaller {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 			HttpEntity<String> request = new HttpEntity<String>(headers);
+			System.out.println(syncUrl);
 			ResponseEntity<String> response = restTemplate.exchange(
 					syncUrl+"/{id}",HttpMethod.GET, request, String.class, objectMapper.writeValueAsString(form));
 			System.out.println(response.getBody());

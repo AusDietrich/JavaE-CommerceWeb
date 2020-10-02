@@ -1,13 +1,18 @@
 package com.Audie.JavaECommWeb.api;
 
+import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +27,7 @@ import com.Audie.JavaECommWeb.model.Cart;
 import com.Audie.JavaECommWeb.model.ProductList;
 import com.Audie.JavaECommWeb.svc.WebSvc;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -90,24 +96,18 @@ public class WebController {
 	@RequestMapping(value="/weatherTime")
     public ModelAndView weatherReturn(Form form,Model model) throws InterruptedException, ExecutionException 
     {
-		if (StringUtils.isEmpty(form.getCity1())) {
-    		form.setCity1("Phoenix");
-    	}
-    	if (StringUtils.isEmpty(form.getCity2())) {
-    		form.setCity2("Tucson");
-    	}
-    	if (StringUtils.isEmpty(form.getCity3())) {
-    		form.setCity3("Willcox");
-    	}
-    	if (StringUtils.isEmpty(form.getCity4())) {
-    		form.setCity4("Yuma");
-    	}
-    	if (StringUtils.isEmpty(form.getCity5())) {
-    		form.setCity5("Flagstaff");
-    	}
-    	if (StringUtils.isEmpty(form.getCity6())) {
-    		form.setCity6("Page");
-    	}
+		Map<String, String> map = convertObjToMap(form, 
+			    new TypeReference<Map<String, String>>(){});
+		List<String> formList = new ArrayList<>();
+		int empty = 0;
+		for(Map.Entry<String, String> entry : map.entrySet()) {
+			if(StringUtils.isBlank(entry.getValue())) {
+				entry.setValue(emptyCityInput(empty));
+				empty++;
+			}
+		}
+		form = convertMapToObj(map);
+		System.out.println("form: "+form);
     	List<WeatherEnt> weatherList = new ArrayList<>(); 
     	Long start = System.currentTimeMillis();
    		weatherList = ecomSvc.weatherCall(form);
@@ -121,4 +121,40 @@ public class WebController {
  		modelAndView.setViewName("weatherReturn");
  		return modelAndView;
     }
+	public String emptyCityInput(int checked) {
+		String returnedCity;
+		switch(checked) {
+			case 0:
+				returnedCity = "Phoenix";
+				break;
+			case 1:
+				returnedCity = "Tucson";
+	    		break;
+			case 2:
+				returnedCity = "Willcox";
+	    		break;
+			case 3:
+				returnedCity = "Yuma";
+	    		break;
+			case 4:
+				returnedCity = "Flagstaff";
+	    		break;
+			case 5:
+				returnedCity = "Page";
+	    		break;
+	    	default:
+	    		returnedCity = "Phoenix";
+	    		break;
+		}
+		return returnedCity;
+	}
+	public <T> T convertObjToMap(Object o, TypeReference<T> ref) {
+	    ObjectMapper mapper = new ObjectMapper();
+	    return mapper.convertValue(o, ref);
+	}
+	public Form convertMapToObj(Map<String, String> map) {
+		ObjectMapper mapper = new ObjectMapper(); // jackson's objectmapper
+		Form form = mapper.convertValue(map, Form.class);
+		return form;
+	}
 }

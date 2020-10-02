@@ -1,7 +1,6 @@
 package com.Audie.JavaECommWeb.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
 

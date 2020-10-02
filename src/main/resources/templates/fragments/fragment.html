@@ -35,5 +35,10 @@
 		<p class="col-sm-6 weatherFont" th:text="${weath.Main.temp}"></p>
 		<p class="col-sm-12 weatherFont" th:text="${weath.Weather[0].main}"></p>
 	</div>
+	<div class="row weatherFrag" th:fragment="Smoke" style="background-color:LightSlateGray;">
+		<p class="col-sm-6 weatherFont" th:text="${weath.name}" ></p>
+		<p class="col-sm-6 weatherFont" th:text="${weath.Main.temp}"></p>
+		<p class="col-sm-12 weatherFont" th:text="${weath.Weather[0].main}"></p>
+	</div>
 </body>
 </html>
