@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+	<h1>Error Page</h1>
+	<h3>You are seeing this as a response to an error.</h3>
+	
+	<h1>Reason:</h1>
+	<h3 th:text="${message}"></h3>
+	<h1>User Input:</h1>
+	<h3 th:text="${input}"></h3>
+</body>
+</html>

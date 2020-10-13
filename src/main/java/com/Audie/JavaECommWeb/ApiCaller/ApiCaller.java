@@ -20,6 +20,7 @@ import com.Audie.JavaECommWeb.entity.Form;
 import com.Audie.JavaECommWeb.entity.WeatherEnt;
 import com.Audie.JavaECommWeb.model.ProductList;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -74,7 +75,7 @@ public class ApiCaller {
 			System.out.println(syncUrl);
 			ResponseEntity<String> response = restTemplate.exchange(
 					syncUrl+"/{id}",HttpMethod.GET, request, String.class, objectMapper.writeValueAsString(form));
-			System.out.println(response.getBody());
+			System.out.println("Response: "+response);
 			weatherList = objectMapper.readValue(response.getBody(), new TypeReference<List<WeatherEnt>>(){});
 		} catch (JsonParseException e) {
 			e.printStackTrace();
@@ -82,7 +83,10 @@ public class ApiCaller {
 			e.printStackTrace();
 		} catch (HttpClientErrorException e) {
 			e.printStackTrace();
-		} catch (Exception e) {
+//		} catch (Exception e) {
+//			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return weatherList;

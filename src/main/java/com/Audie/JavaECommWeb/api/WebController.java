@@ -13,13 +13,17 @@ import java.util.concurrent.ExecutionException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Audie.JavaECommWeb.Exceptions.SpringException;
+import com.Audie.JavaECommWeb.entity.ErrorMessage;
 import com.Audie.JavaECommWeb.entity.Form;
 import com.Audie.JavaECommWeb.entity.WeatherEnt;
 import com.Audie.JavaECommWeb.model.Buying;
@@ -31,7 +35,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 public class WebController {
 
 	@Autowired
@@ -94,6 +101,7 @@ public class WebController {
 		return modelAndView;
 	}
 	@RequestMapping(value="/weatherTime")
+	@ExceptionHandler({SpringException.class})
     public ModelAndView weatherReturn(Form form,Model model) throws InterruptedException, ExecutionException 
     {
 		Map<String, String> map = convertObjToMap(form, 
@@ -119,8 +127,10 @@ public class WebController {
         model.addAttribute("weather", weatherList);
      	ModelAndView modelAndView = new ModelAndView();
  		modelAndView.setViewName("weatherReturn");
+ 		System.out.println("form:"+form);
  		return modelAndView;
     }
+
 	public String emptyCityInput(int checked) {
 		String returnedCity;
 		switch(checked) {
