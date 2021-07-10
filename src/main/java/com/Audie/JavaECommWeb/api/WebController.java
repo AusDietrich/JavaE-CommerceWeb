@@ -91,6 +91,14 @@ public class WebController {
 	public Buying total(@RequestBody Buying obj, Model model) {
 		return obj;
 	}
+	@RequestMapping(value = "/strang")
+	public Map<String, String> string() {
+		 HashMap<String, String> map = new HashMap<>();
+		    map.put("key", "value");
+		    map.put("foo", "bar");
+		    map.put("aa", "bb");
+		    return map;
+	}
 	@RequestMapping(value="/weather", method=RequestMethod.GET)
 	public ModelAndView weatherIndex(Model model) throws InterruptedException, ExecutionException 
 	{
